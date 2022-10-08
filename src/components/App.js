@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import GlobalStyle from "./GlobalStyle"
 import Header from './Header';
 import MainPage from './MainPage';
-import SessionsPage from './SessionsPage'
+import SessionsPage from './SessionsPage';
+import SeatsPage from './SeatsPage';
 
 export default function App() {
     return(
@@ -10,8 +11,9 @@ export default function App() {
             <GlobalStyle />
             <Header />
             <Routes>
-                <Route path='/' element={<MainPage />}/>
-                <Route path='/sessoes' element={<SessionsPage />}/>
+                {/* <Route path='/' element={<MainPage />}/> */}
+                {/* <Route path='/' element={<SessionsPage />}/> */}
+                <Route path='/' element={<SeatsPage />} />
             </Routes>
         </BrowserRouter>
     )
