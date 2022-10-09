@@ -1,29 +1,37 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function MainPage() {
+  const [listMovies, setListMovies] = useState(null);
+  useEffect(() => {
+    const url = "https://mock-api.driven.com.br/api/v5/cineflex/movies";
+    const requisition = axios.get(url);
+    requisition.then((response) => setListMovies(response.data));
+    requisition.catch((erro) => alert(erro.response.data));
+  }, []);
+
+  const renderMovies = [];
+  if (listMovies !== null) {
+    listMovies.map((value) =>
+      renderMovies.push(
+        <Link key={value.id} to={`/sessoes/${value.id}`}>
+          <Movie data-identifier="movie-outdoor">
+            <img
+              src={value.posterURL}
+              alt="Não foi possível carregar a imagem"
+            />
+          </Movie>
+        </Link>
+      )
+    );
+  }
+
   return (
     <Page>
       <h1>Selecione o filme</h1>
-      <Movies>
-        <Movie>
-          <img
-            src="https://cdn.fstatic.com/media/movies/covers/2021/09/i1618094189754080.jpeg"
-            alt="Não foi possível carregar a imagem"
-          />
-        </Movie>
-        <Movie>
-          <img
-            src="https://cdn.fstatic.com/media/movies/covers/2021/09/i1618094189754080.jpeg"
-            alt="Não foi possível carregar a imagem"
-          />
-        </Movie>
-        <Movie>
-          <img
-            src="https://cdn.fstatic.com/media/movies/covers/2021/09/i1618094189754080.jpeg"
-            alt="Não foi possível carregar a imagem"
-          />
-        </Movie>
-      </Movies>
+      <Movies>{renderMovies}</Movies>
     </Page>
   );
 }
@@ -48,7 +56,7 @@ const Movies = styled.div`
 `;
 
 const Movie = styled.div`
-cursor: pointer;
+  cursor: pointer;
   width: 145px;
   height: 210px;
   margin: 10px 30px;
