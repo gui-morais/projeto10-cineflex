@@ -11,6 +11,7 @@ const Foot = styled.div`
   border: 1px solid #9eadba;
   position: fixed;
   bottom: 0px;
+  left: 0px;
   display: flex;
   align-items: center;
   div:first-child {

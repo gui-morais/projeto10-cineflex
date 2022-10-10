@@ -51,7 +51,9 @@ export default function SessionsPage() {
   return (
     <Page>
       <h1>Selecione o horário</h1>
+      <Sessions>
       {renderSessions}
+      </Sessions>
       <Footer>{footer}</Footer>
     </Page>
   );
@@ -91,4 +93,9 @@ const Schedule = styled.button`
   border: 0px;
   margin-right: 10px;
   margin-bottom: 10px;
+`;
+const Sessions = styled.div`
+margin-bottom: 150px;
+margin-left: 30px;
+width: 100%;
 `;
