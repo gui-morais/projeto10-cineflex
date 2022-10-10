@@ -277,7 +277,6 @@ const Buttom = styled.button`
   color: white;
   cursor: pointer;
   border: 0px;
-  margin-top: 60px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 60px auto;
+  margin-bottom: 120px;
 `;
